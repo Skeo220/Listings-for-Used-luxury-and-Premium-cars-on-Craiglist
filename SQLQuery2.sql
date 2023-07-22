@@ -1,34 +1,35 @@
-/*
+-- CREATING THE TABLE
 CREATE TABLE craiglist_used_cars(
     id VARCHAR(MAX),
-    region VARCHAR(MAX),
-    price VARCHAR(MAX),
-    year VARCHAR(MAX),
-    manufacturer VARCHAR(MAX),
-    model VARCHAR(MAX),
-    condition VARCHAR(MAX),
-    cylinders VARCHAR(MAX),
-    fuel VARCHAR(MAX),
-    odometer VARCHAR(MAX),
-    title_status VARCHAR(MAX),
-    transmission VARCHAR(MAX),
-    VIN VARCHAR(MAX),
-    drive VARCHAR(MAX),
-    size VARCHAR(MAX),
-    type VARCHAR(MAX),
-    paint_color VARCHAR(MAX),
-    county VARCHAR(MAX),
-    state VARCHAR(MAX),
-    lat VARCHAR(MAX),
-    long VARCHAR(MAX),
-    posting_date VARCHAR(MAX)
+    region VARCHAR(500),
+    price INT,
+    year INT,
+    manufacturer VARCHAR(500),
+    model VARCHAR(500),
+    condition VARCHAR(500),
+    cylinders VARCHAR(500),
+    fuel VARCHAR(255),
+    odometer INT,
+    title_status VARCHAR(255),
+    transmission VARCHAR(255),
+    VIN VARCHAR(500),
+    drive VARCHAR(255),
+    size VARCHAR(255),
+    type VARCHAR(255),
+    paint_color VARCHAR(255),
+    county VARCHAR(255),
+    state VARCHAR(255),
+    lat DECIMAL(10,6),
+    long DECIMAL(10,6),
+    posting_date DATETIME
 );
 
-
+---------------------------------------------------------------------
+-- VIEWING THE TABLE
 SELECT *
 FROM craiglist_used_cars
-
--- Transforming the null into actual Null
+--------------------------------------------------------------------
+-- UPDATING THE TABLE TO READ NULLs APPROPRIATELTY
 UPDATE dbo.craiglist_used_cars
 SET id = NULLIF(id, 'NULL'),
     region = NULLIF(region, 'NULL'),
@@ -52,15 +53,13 @@ SET id = NULLIF(id, 'NULL'),
     lat = NULLIF(lat, 'NULL'),
     long = NULLIF(long, 'NULL'),
     posting_date = NULLIF(posting_date, 'NULL');
-	*/
--------------------------------------
-ALTER TABLE Projects.dbo.craiglist_used_cars
-ALTER COLUMN price FLOAT
-
+-------------------------------------------------------------------------
+-- UPDATING THE posting_date COLUMN
 ALTER TABLE Projects.dbo.craiglist_used_cars
 ALTER COLUMN posting_date DATE
-
--- SELECT THE DATASET THAT WE WANT
+---------------------------------------------------------------------------
+-- SELECTING THE NECESSARY DATA INTO A TEMPORARY TABLE
+-- SELECTING CAR MODELS THAT HAVE BEEN LISTED MORE THAN 1000 TIMESDDDDDDD
 SELECT region, price, year, cars.manufacturer, cars.model, condition, cylinders, fuel, odometer, title_status, 
     transmission, drive, size, type, paint_color, state, lat, long, posting_date
 INTO #popular_models
@@ -95,7 +94,7 @@ LEFT JOIN (
     AND posting_date  IS NOT NULL)cars
 ON temp.manufacturer = cars.manufacturer AND temp.model = cars.model
 WHERE price != 0;
-
--------------------
+-----------------------------------------------------------------------
+-- VIEWING THE TEMPORARY TABLE
 SELECT *
 FROM #popular_models
