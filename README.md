@@ -1,2 +1,12 @@
-# Used-Car-Data-Project
- Used Car Data Project
+# Craiglist Luxury/Premium car listings
+**[View Tableau Dashboard](https://public.tableau.com/app/profile/stephan.keo/viz/UsedLuxuryPremiumCarListingsonCraiglist/Dashboard1?publish=yes)**
+## Summary
+The project began in 2021 as an analysis of used car listings on Craigslist and evolved into a captivating study focused on Luxury/Premium car listings. Leveraging SQL, the analysis successfully identified the most popular Luxury/Premium car manufacturers and models, and these insights were transformed into an engaging Tableau dashboard. This interactive dashboard allows stakeholders to gain valuable insights from the data and contributes to a deeper understanding of the Luxury/Premium car market on Craigslist. The project's utilization of SQL for data analysis and visualization through Tableau showcases the power of these tools in providing comprehensive and informative data-driven narratives. For further exploration and reference, the Python code and SQL query used for the analysis are available on GitHub.
+## Key Steps
+* Data Collection: Data was collected from Craigslist used car listings, gathering information such as manufacturer, model, cylinders, fuel type, transmission, drive type, size, and car type.
+
+* Analysis: The collected data was uploaded to SQL using Python and then analyzed using SQL queries to identify and study the Luxury/Premium car listings. The SQL queries involved grouping, filtering, and calculating car counts based on specified criteria, such as the popularity threshold. Cars from premium brands with less than 60,000 miles were separated and then analyzed. 
+
+* Tableau Dashboard: The findings from the SQL analysis were presented visually in a Tableau dashboard. The dashboard provided an intuitive and interactive view of the Luxury/Premium car data, allowing users to explore the insights.
+## Key Insights
+The analysis uncovered a significant amount of activity on the selling side of luxury and premium cars, with a notable proportion of these cars being in good condition, making them attractive prospects for potential buyers. The Tableau dashboard further enhanced the findings by providing a user-friendly platform, enabling intuitive exploration of the data visually. This feature-rich dashboard facilitated a deeper understanding of the luxury and premium car market, empowering stakeholders to make well-informed decisions based on valuable insights.
