@@ -1,8 +1,69 @@
+-- CREATING THE TABLE
+CREATE TABLE craiglist_used_cars(
+    id VARCHAR(MAX),
+    region VARCHAR(500),
+    price INT,
+    year INT,
+    manufacturer VARCHAR(500),
+    model VARCHAR(500),
+    condition VARCHAR(500),
+    cylinders VARCHAR(500),
+    fuel VARCHAR(255),
+    odometer INT,
+    title_status VARCHAR(255),
+    transmission VARCHAR(255),
+    VIN VARCHAR(500),
+    drive VARCHAR(255),
+    size VARCHAR(255),
+    type VARCHAR(255),
+    paint_color VARCHAR(255),
+    county VARCHAR(255),
+    state VARCHAR(255),
+    lat DECIMAL(10,6),
+    long DECIMAL(10,6),
+    posting_date DATETIME
+);
+
+---------------------------------------------------------------------------------------------------------------
+-- VIEWING THE TABLE
+SELECT *
+FROM craiglist_used_cars
+---------------------------------------------------------------------------------------------------------------
+-- UPDATING THE TABLE TO READ NULLs APPROPRIATELTY
+UPDATE dbo.craiglist_used_cars
+SET id = NULLIF(id, 'NULL'),
+    region = NULLIF(region, 'NULL'),
+    price = NULLIF(price, 'NULL'),
+    year = NULLIF(year, 'NULL'),
+    manufacturer = NULLIF(manufacturer, 'NULL'),
+    model = NULLIF(model, 'NULL'),
+    condition = NULLIF(condition, 'NULL'),
+    cylinders = NULLIF(cylinders, 'NULL'),
+    fuel = NULLIF(fuel, 'NULL'),
+    odometer = NULLIF(odometer, 'NULL'),
+    title_status = NULLIF(title_status, 'NULL'),
+    transmission = NULLIF(transmission, 'NULL'),
+    VIN = NULLIF(VIN, 'NULL'),
+    drive = NULLIF(drive, 'NULL'),
+    size = NULLIF(size, 'NULL'),
+    type = NULLIF(type, 'NULL'),
+    paint_color = NULLIF(paint_color, 'NULL'),
+    county = NULLIF(county, 'NULL'),
+    state = NULLIF(state, 'NULL'),
+    lat = NULLIF(lat, 'NULL'),
+    long = NULLIF(long, 'NULL'),
+    posting_date = NULLIF(posting_date, 'NULL');
+
+-------------------------------------------------------------------------------------------------------
+-- UPDATING THE posting_date COLUMN
+ALTER TABLE Projects.dbo.craiglist_used_cars
+ALTER COLUMN posting_date DATE
+---------------------------------------------------------------------------------------------------------
 -- Analysis of premium and luxury brands used car sales on craiglist. But first, a couple of fun facts.
 -- Viewing the whole dataset
 SELECT *
 FROM Projects.dbo.craiglist_used_cars
-----------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------
 -- There are  lot of nulls. what is the total null count for every column? 
 SELECT
 	COUNT(case when region is null then 1 end) null_region,
